@@ -1,10 +1,10 @@
-import g1 from "@/assets/hero.jpg";
-import g2 from "@/assets/room-1.jpg";
-import g3 from "@/assets/room-2.jpg";
-import g4 from "@/assets/room-3.jpg";
-import g5 from "@/assets/amenity-pool.jpg";
-import g6 from "@/assets/amenity-gym.jpg";
-import g7 from "@/assets/amenity-lounge.jpg";
+import g1 from "../../assets/hero.jpg";
+import g2 from "../../assets/room-1.jpg";
+import g3 from "../../assets/room-2.jpg";
+import g4 from "../../assets/room-3.jpg";
+import g5 from "../../assets/amenity-pool.jpg";
+import g6 from "../../assets/amenity-gym.jpg";
+import g7 from "../../assets/amenity-lounge.jpg";
 
 export function Gallery() {
   return (

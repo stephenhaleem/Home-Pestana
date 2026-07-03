@@ -1,4 +1,4 @@
-import pool from "@/assets/amenity-pool.jpg";
+import pool from "../../assets/amenity-pool.jpg";
 
 const list = [
   { t: "Rooftop Infinity Pool", d: "Sunset skyline swims with butler service." },
