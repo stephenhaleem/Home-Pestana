@@ -1,45 +1,34 @@
-import room1 from "../../assets/room-1.jpg";
-import room2 from "../../assets/room-2.jpg";
-import room3 from "../../assets/room-3.jpg";
+import room1 from "../../assets/room-1.jpg?url";
+import room2 from "../../assets/room-2.jpg?url";
+import room3 from "../../assets/room-3.jpg?url";
 
-const items = [
-  {
-    img: room1,
-    tag: "Studio Suite",
-    title: "The Aurelia Studio",
-    price: "$220",
-    desc: "An intimate 45m² retreat with a plush king bed, gilded accents, and marble bath.",
-  },
-  {
-    img: room2,
-    tag: "One Bedroom",
-    title: "The Marbella Residence",
-    price: "$340",
-    desc: "Bright, open-plan living with a chef's kitchen, private balcony, and dining nook.",
-  },
-  {
-    img: room3,
-    tag: "Penthouse",
-    title: "The Pestana Penthouse",
-    price: "$680",
-    desc: "Two-storey penthouse crowned by a marble spa bath and skyline terrace.",
-  },
-];
+import apartments from "./apartmentsData";
+
+const items = apartments.map((a) => ({
+  img: a.images[0],
+  tag: a.slug.includes("studio") ? "Studio Suite" : a.slug.includes("one-bedroom") ? "One Bedroom" : "Two Bedroom",
+  title: a.title,
+  price: "—",
+  desc: a.short,
+  slug: a.slug,
+}));
 
 export function Apartments() {
   return (
-    <section id="apartments" className="py-28 lg:py-40 bg-background">
+    <section id="apartments" className="relative z-10 py-28 lg:py-40 bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16 reveal-on-scroll">
           <div className="max-w-2xl">
-            <span className="text-xs uppercase tracking-[0.4em] text-gold-deep">The Residences</span>
+            <span className="text-xs uppercase tracking-[0.4em] text-gold-deep">
+              The Residences
+            </span>
             <h2 className="mt-4 font-serif text-4xl md:text-6xl text-foreground">
               Suites shaped by <span className="text-gradient-gold italic">quiet luxury</span>
             </h2>
           </div>
           <p className="max-w-md text-muted-foreground leading-relaxed">
-            Three distinct floor plans, each finished in soft ivory, warm oak, and hand-cast
-            brass. Every residence is serviced daily and stocked to your preference.
+            Three distinct floor plans, each finished in soft ivory, warm oak, and hand-cast brass.
+            Every residence is serviced daily and stocked to your preference.
           </p>
         </div>
 
@@ -76,10 +65,15 @@ export function Apartments() {
                 </div>
                 <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{it.desc}</p>
                 <a
-                  href="#booking"
+                  href={`/apartments/${it.slug}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.history.pushState({}, '', `/apartments/${it.slug}`);
+                    window.dispatchEvent(new PopStateEvent('popstate'));
+                  }}
                   className="gold-underline mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-foreground"
                 >
-                  Reserve →
+                  View details →
                 </a>
               </div>
             </article>

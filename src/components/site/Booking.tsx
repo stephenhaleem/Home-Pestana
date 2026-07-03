@@ -1,6 +1,6 @@
 export function Booking() {
   return (
-    <section id="booking" className="py-28 lg:py-36 bg-background">
+    <section id="booking" className="relative z-10 py-28 lg:py-36 bg-background">
       <div className="max-w-6xl mx-auto px-6 lg:px-10">
         <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[oklch(0.99_0.005_85)] to-[oklch(0.95_0.03_85)] border border-gold/30 shadow-elegant p-10 md:p-16 reveal-on-scroll">
           <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-gradient-gold opacity-20 blur-3xl" />

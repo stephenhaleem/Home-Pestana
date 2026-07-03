@@ -62,7 +62,7 @@
   --gold-deep: oklch(0.58 0.12 75);
 
   --gradient-gold: linear-gradient(135deg, oklch(0.82 0.12 85), oklch(0.68 0.14 78));
-  --gradient-hero-overlay: linear-gradient(180deg, oklch(1 0 0 / 0.15) 0%, oklch(1 0 0 / 0.5) 60%, oklch(1 0 0 / 0.9) 100%);
+  --gradient-hero-overlay: transparent;
   --shadow-gold: 0 20px 60px -20px color-mix(in oklab, var(--gold) 45%, transparent);
   --shadow-soft: 0 10px 40px -10px oklch(0.6 0.05 85 / 0.15);
   --shadow-elegant: 0 30px 80px -30px oklch(0.4 0.05 85 / 0.25);
@@ -84,7 +84,10 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-serif);
     letter-spacing: -0.01em;
   }
@@ -126,7 +129,9 @@
   overflow: hidden;
 }
 @utility zoom-hover-img {
-  transition: transform 1200ms cubic-bezier(0.22, 1, 0.36, 1), filter 800ms ease;
+  transition:
+    transform 1200ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 800ms ease;
   will-change: transform;
 }
 .zoom-hover:hover .zoom-hover-img {
@@ -135,7 +140,9 @@
 }
 
 @utility hover-lift {
-  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 400ms ease;
+  transition:
+    transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 400ms ease;
 }
 .hover-lift:hover {
   transform: translateY(-6px);
@@ -163,18 +170,171 @@
 }
 
 @keyframes reveal-up {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 @keyframes float-slow {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-12px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+@keyframes hero-zoom {
+  0% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@utility animate-hero-zoom {
+  animation: hero-zoom 20s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform;
+}
+@utility bg-hero-overlay {
+  /* Darken hero images to improve text contrast */
+  background-image: linear-gradient(180deg, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.52) 60%, rgba(0,0,0,0.72) 100%);
 }
 
+/* Hero text helper: ensures readable white text with a soft shadow */
+.hero-text {
+  color: #ffffff;
+}
+.hero-text h1,
+.hero-text p,
+.hero-text .animate-reveal,
+.hero-text a {
+  color: inherit;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+.hero-text .text-gradient-gold {
+  /* keep gradient gold text readable by adding slight text stroke */
+  -webkit-text-stroke: 0.6px rgba(0,0,0,0.25);
+}
+
+/* Target hero images specifically to avoid overwrite and ensure consistent blur */
+section#home .hero-media img.hero-slide {
+  filter: blur(6px);
+  transition: filter 280ms ease, opacity 280ms ease, transform 1.2s ease;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Hamburger icon for mobile nav */
+.hamburger {
+  width: 24px;
+  height: 18px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hamburger span {
+  display: block;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 300ms cubic-bezier(0.4,0,0.2,1), opacity 200ms ease;
+}
+.hamburger.open > span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger.open > span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.open > span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+.hamburger span {
+  transform-origin: center;
+}
+
+/* Footer styles matching reference image */
+.footer-bg {
+  background-color: #202020; /* dark gray */
+  color: #ffffff; /* make footer text white */
+  font-family: var(--font-sans); /* use website font */
+}
+.footer-bg .text-muted-foreground {
+  color: rgba(255,255,255,0.78);
+}
+.footer-bg a { color: #ffffff; }
+.footer-title {
+  color: var(--gold); /* use site's gold color */
+  font-size: 1.05rem;
+  font-weight: 600;
+  font-family: var(--font-serif);
+}
+
+/* Weather widget layout */
+.weather-widget {
+  width: 100%;
+}
+.weather-icon svg { width: 48px; height: 48px; }
+.weather-temp .text-4xl { line-height: 1; }
+.weather-units { opacity: 0.85; }
+.weather-meta { min-width: 140px; }
+@media (max-width: 768px) {
+  .weather-widget { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .weather-meta { text-align: left; min-width: auto; }
+
+  /* Stack top columns and center logo */
+  .footer-top { display: block !important; }
+  .footer-top > :nth-child(1) { order: 2; }
+  .footer-top > :nth-child(2) { order: 3; }
+  .footer-top > :nth-child(3) { order: 1; }
+
+  .footer-bg .w-40 { width: 100% !important; display:flex; justify-content:center; }
+  .subscribe-input { width: 100% !important; max-width: none; }
+  .subscribe-btn { width: 100%; padding: 14px; }
+  .weather-temp .text-4xl { font-size: 2rem; }
+  .footer-title { text-align: left; }
+  .footer-bg { padding-top: 24px; padding-bottom: 24px; }
+
+  /* Hide back-to-top UI commonly used */
+  [aria-label="Back to top"],
+  .back-to-top,
+  .scroll-to-top,
+  #back-to-top,
+  .to-top,
+  .backtotop { display: none !important; }
+}
+.subscribe-input {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 12px 16px;
+  color: #ffffff;
+  width: 100%;
+  max-width: 320px;
+}
+.subscribe-btn {
+  background: #c6a31c; /* gold-ish */
+  color: #111;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 2px;
+}
+@media (max-width: 768px) {
+  .subscribe-input { max-width: 200px; }
+}
+
+/* Usage: add the `hero-slide` class to the hero <img> elements and `hero-media` to their container */
 @utility animate-reveal {
   opacity: 0;
   animation: reveal-up 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -186,7 +346,9 @@
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1), transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .reveal-on-scroll.is-visible {
   opacity: 1;

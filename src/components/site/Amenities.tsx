@@ -1,4 +1,4 @@
-import pool from "../../assets/amenity-pool.jpg";
+import pool from "../../assets/amenity-pool.jpg?url";
 
 const list = [
   { t: "Rooftop Infinity Pool", d: "Sunset skyline swims with butler service." },
@@ -11,7 +11,7 @@ const list = [
 
 export function Amenities() {
   return (
-    <section id="amenities" className="relative py-28 lg:py-40 overflow-hidden">
+    <section id="amenities" className="relative z-100 py-28 bg-background lg:py-40 overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <img
           src={pool}
@@ -27,7 +27,8 @@ export function Amenities() {
         <div className="text-center max-w-2xl mx-auto reveal-on-scroll">
           <span className="text-xs uppercase tracking-[0.4em] text-gold-deep">Amenities</span>
           <h2 className="mt-4 font-serif text-4xl md:text-6xl text-foreground">
-            Everything considered.<br />
+            Everything considered.
+            <br />
             <span className="text-gradient-gold italic">Nothing overlooked.</span>
           </h2>
         </div>

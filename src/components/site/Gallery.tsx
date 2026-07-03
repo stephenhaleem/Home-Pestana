@@ -1,14 +1,14 @@
-import g1 from "../../assets/hero.jpg";
-import g2 from "../../assets/room-1.jpg";
-import g3 from "../../assets/room-2.jpg";
-import g4 from "../../assets/room-3.jpg";
-import g5 from "../../assets/amenity-pool.jpg";
-import g6 from "../../assets/amenity-gym.jpg";
-import g7 from "../../assets/amenity-lounge.jpg";
+import g1 from "../../assets/hero1.jpeg";
+import g2 from "../../assets/room-1.jpg?url";
+import g3 from "../../assets/room-2.jpg?url";
+import g4 from "../../assets/room-3.jpg?url";
+import g5 from "../../assets/amenity-pool.jpg?url";
+import g6 from "../../assets/amenity-gym.jpg?url";
+import g7 from "../../assets/amenity-lounge.jpg?url";
 
 export function Gallery() {
   return (
-    <section id="gallery" className="py-28 lg:py-40 bg-secondary/40">
+    <section id="gallery" className="relative z-10 py-28 lg:py-40 bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14 reveal-on-scroll">
           <div>
