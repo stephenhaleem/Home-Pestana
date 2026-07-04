@@ -1,5 +1,6 @@
 import apartments from "./apartmentsData";
 import { ApartmentMap } from "./ApartmentMap";
+import { BookingForm } from "./BookingForm";
 
 export function ApartmentDetail({ slug }: { slug: string }) {
   const apt = apartments.find((a) => a.slug === slug);
@@ -98,6 +99,9 @@ export function ApartmentDetail({ slug }: { slug: string }) {
               />
             </div>
           )}
+          <div className="mt-8">
+            <BookingForm apartmentTitle={apt.title} apartmentSlug={apt.slug} />
+          </div>
         </div>
       </div>
     </main>
