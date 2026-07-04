@@ -70,3 +70,5 @@ export function ApartmentMap({ title, address, latitude, longitude }: ApartmentM
     </div>
   );
 }
+
+
