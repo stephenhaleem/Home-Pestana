@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ApartmentSlugRouteImport } from './routes/apartment-slug'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApartmentsSlugRouteImport } from './routes/Apartments.$slug'
 
 const ApartmentSlugRoute = ApartmentSlugRouteImport.update({
   id: '/apartment-slug',
@@ -22,31 +23,40 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApartmentsSlugRoute = ApartmentsSlugRouteImport.update({
+  id: '/Apartments/$slug',
+  path: '/Apartments/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/apartment-slug': typeof ApartmentSlugRoute
+  '/Apartments/$slug': typeof ApartmentsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/apartment-slug': typeof ApartmentSlugRoute
+  '/Apartments/$slug': typeof ApartmentsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/apartment-slug': typeof ApartmentSlugRoute
+  '/Apartments/$slug': typeof ApartmentsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/apartment-slug'
+  fullPaths: '/' | '/apartment-slug' | '/Apartments/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/apartment-slug'
-  id: '__root__' | '/' | '/apartment-slug'
+  to: '/' | '/apartment-slug' | '/Apartments/$slug'
+  id: '__root__' | '/' | '/apartment-slug' | '/Apartments/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApartmentSlugRoute: typeof ApartmentSlugRoute
+  ApartmentsSlugRoute: typeof ApartmentsSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/Apartments/$slug': {
+      id: '/Apartments/$slug'
+      path: '/Apartments/$slug'
+      fullPath: '/Apartments/$slug'
+      preLoaderRoute: typeof ApartmentsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApartmentSlugRoute: ApartmentSlugRoute,
+  ApartmentsSlugRoute: ApartmentsSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

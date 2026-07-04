@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
 const links = [
-  { href: "#home", label: "Home" },
-  { href: "#apartments", label: "Apartments" },
-  { href: "#amenities", label: "Amenities" },
-  { href: "#gallery", label: "Gallery" },
-  { href: "#contact", label: "Contact" },
+  { href: "/", label: "Home" },
+  { href: "/#apartments", label: "Apartments" },
+  { href: "/#amenities", label: "Amenities" },
+  { href: "/#gallery", label: "Gallery" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export function Nav() {
@@ -26,7 +26,7 @@ export function Nav() {
         }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 lg:px-10 h-16">
-          <a href="#home" className="flex items-center gap-2 group">
+          <a href="/" className="flex items-center gap-2 group">
             <span className="w-9 h-9 rounded-full bg-gradient-gold shadow-gold flex items-center justify-center text-primary-foreground font-serif text-lg">
               P
             </span>
@@ -50,7 +50,7 @@ export function Nav() {
 
           <div className="flex items-center gap-4">
             <a
-              href="#booking"
+              href="/#booking"
               className="hidden md:inline-flex items-center gap-2 bg-gradient-gold text-primary-foreground text-xs uppercase tracking-[0.22em] px-6 py-3 rounded-full shadow-gold hover:shadow-elegant hover:scale-[1.03] transition-all duration-300"
             >
               Book Your Stay
@@ -80,7 +80,10 @@ export function Nav() {
         className={`fixed inset-0 transition-transform duration-300 lg:hidden pointer-events-auto ${open ? "translate-x-0" : "translate-x-full"}`}
         style={{ zIndex: 9999 }}
       >
-        <div className="absolute inset-0 bg-background/95 backdrop-blur-md" onClick={() => setOpen(false)} />
+        <div
+          className="absolute inset-0 bg-background/95 backdrop-blur-md"
+          onClick={() => setOpen(false)}
+        />
         <div className="relative h-full w-full px-6 pt-20">
           <nav className="flex flex-col gap-6 text-foreground">
             {links.map((l) => (
@@ -97,7 +100,7 @@ export function Nav() {
 
           <div className="mt-8">
             <a
-              href="#booking"
+              href="/#booking"
               onClick={() => setOpen(false)}
               className="inline-flex items-center gap-2 bg-gradient-gold text-primary-foreground text-xs uppercase tracking-[0.22em] px-6 py-3 rounded-full shadow-gold"
             >

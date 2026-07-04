@@ -1,107 +1,130 @@
+import room1 from "../../assets/room-1.jpg?url";
+import room2 from "../../assets/room-2.jpg?url";
+import room3 from "../../assets/room-3.jpg?url";
 import hero1 from "../../assets/hero1.jpeg?url";
-import room1 from "../../assets/hero2.jpeg?url";
-import room2 from "../../assets/home3.jpeg?url";
-import lounge from "../../assets/WhatsApp Image 2026-07-03 at 7.51.45 PM (1).jpeg";
+import hero2 from "../../assets/hero2.jpeg?url";
+import home3 from "../../assets/home3.jpeg?url";
+import lounge from "../../assets/amenity-lounge.jpg?url";
+import gym from "../../assets/amenity-gym.jpg?url";
+import pool from "../../assets/amenity-pool.jpg?url";
 
 export type Apartment = {
   slug: string;
   title: string;
   short: string;
   description: string;
-  bedrooms: string;
-  bathrooms: string;
+  unitsAvailable: string;
+  bedroom: string;
+  bathroom: string;
   kitchen: string;
   living: string;
   amenities: string[];
   parking: string;
   quick: Record<string, string>;
   images: string[];
+  location?: {
+    latitude: number;
+    longitude: number;
+    address: string;
+  };
 };
 
 export const apartments: Apartment[] = [
   {
-    slug: "two-bedroom-deluxe",
-    title: "Two-Bedroom Deluxe",
-    short: "Spacious two-bedroom with king beds and three bathrooms.",
+    slug: "two-bedroom-apartment",
+    title: "Two-Bedroom Apartment",
+    short: "Spacious two-bedroom with king-size beds and three bathrooms.",
     description:
-      "Generous two-bedroom suites designed for extended stays — two large bedrooms with king-size beds, three modern bathrooms, a fully-equipped kitchen and an elegant living room perfect for entertaining.",
-    bedrooms: "2 bedrooms, king-size beds, fitted wardrobes, bedside lighting",
-    bathrooms: "3 bathrooms — master ensuite with rain shower and bathtub, guest bathroom, and powder room",
-    kitchen: "Full kitchen with oven, hob, fridge, dishwasher, and stone countertops",
-    living: "Open-plan living and dining area with smart TV, work desk, and balcony",
-    amenities: ["Daily housekeeping", "High-speed Wi‑Fi", "Smart TV", "In-room safe", "Mini bar"],
-    parking: "Off-street parking available",
+      "Our most generous floor plan — two full bedrooms each with a king-size bed, three private bathrooms, a fully equipped kitchen and a warm, elegant living area. Ideal for families or small groups who want room to spread out without giving up the daily-serviced comfort of a hotel.",
+    unitsAvailable: "4 units available",
+    bedroom:
+      "Two bedrooms, each with a king-size bed, quality linens, fitted wardrobes, and bedside lighting.",
+    bathroom:
+      "Three bathrooms in total — a master ensuite, a second ensuite for the guest bedroom, and an additional guest/powder bathroom.",
+    kitchen:
+      "Fully equipped kitchen with cooker, fridge-freezer, microwave and everyday cookware — ready for home-cooked meals.",
+    living:
+      "Open-plan living and dining space with comfortable seating, a smart TV, and a dedicated work corner.",
+    amenities: [
+      "Daily housekeeping",
+      "High-speed Wi‑Fi",
+      "Smart TV",
+      "24/7 security",
+      "Backup power",
+    ],
+    parking: "Private on-site parking included.",
     quick: {
-      "Bed size": "King",
-      "Bedrooms": "2",
-      "Bathrooms": "3",
-      "Occupancy": "4 adults",
-      "Size": "~95 m²",
+      "Bed size": "King (x2)",
+      Bedrooms: "2",
+      Bathrooms: "3",
+      Occupancy: "Up to 4 guests",
     },
-    images: [hero1, room1, lounge],
+    images: [room1, room2, hero1],
+    location: {
+      latitude: 6.5244,
+      longitude: 3.3792,
+      address: "Home Pestana Apartments, Ikorodu, Nigeria",
+    },
   },
   {
-    slug: "one-bedroom-grand",
-    title: "One-Bedroom Grand",
-    short: "One-bedroom with sitting room and king-size bed, two bathrooms.",
+    slug: "one-bedroom-sitting-room",
+    title: "One-Bedroom with Sitting Room",
+    short: "One bedroom with a separate sitting room, king-size bed, and two bathrooms.",
     description:
-      "A generous one-bedroom residence with separate sitting room — ideal for guests who want a distinct living and sleeping area. King-size bed and two bathrooms provide comfort and privacy.",
-    bedrooms: "1 bedroom with king-size bed and storage",
-    bathrooms: "2 bathrooms — ensuite and a guest bathroom",
-    kitchen: "Open-plan kitchen with modern appliances and breakfast bar",
-    living: "Sitting room with lounge seating, dining table and workspace",
-    amenities: ["Daily housekeeping", "Complimentary refreshments", "Laundry service on request"],
-    parking: "Secure parking available",
+      "A comfortable one-bedroom residence with its own distinct sitting room — perfect for guests who want a clear separation between where they relax and where they sleep. Comes with a king-size bed and two private bathrooms.",
+    unitsAvailable: "1 unit available",
+    bedroom: "One bedroom with a king-size bed, wardrobe storage, and quiet, restful lighting.",
+    bathroom:
+      "Two bathrooms — an ensuite off the bedroom and a second guest bathroom off the sitting room.",
+    kitchen: "Compact, well-appointed kitchen area with essential appliances for everyday cooking.",
+    living: "Separate sitting room with lounge seating, a dining spot, and a smart TV.",
+    amenities: [
+      "Daily housekeeping",
+      "High-speed Wi‑Fi",
+      "Smart TV",
+      "24/7 security",
+      "Backup power",
+    ],
+    parking: "On-site parking available.",
     quick: {
       "Bed size": "King",
-      "Bedrooms": "1 + sitting room",
-      "Bathrooms": "2",
-      "Occupancy": "2 adults",
-      "Size": "~65 m²",
+      Bedrooms: "1 + sitting room",
+      Bathrooms: "2",
+      Occupancy: "Up to 2 guests",
     },
-    images: [room1, hero1, room2],
+    images: [hero2, home3, lounge],
+    location: {
+      latitude: 6.5244,
+      longitude: 3.3792,
+      address: "Home Pestana Apartments, Ikorodu, Nigeria",
+    },
   },
   {
-    slug: "studio-kitchen",
-    title: "Studio with Kitchen",
-    short: "Studio apartment with integrated kitchen and one bathroom.",
+    slug: "studio-single-room",
+    title: "Studio (Single Room with Kitchen)",
+    short: "Compact studio with an integrated kitchen and one bathroom.",
     description:
-      "Compact studio living designed for short stays or solo travellers — a well-appointed kitchenette, comfortable sleeping area, and private bathroom.",
-    bedrooms: "Studio sleeping area with king-size bed",
-    bathrooms: "1 bathroom with shower",
-    kitchen: "Compact kitchen with hob, fridge and microwave",
-    living: "Combined living/sleeping area with TV and workspace",
-    amenities: ["Fast Wi‑Fi", "Daily housekeeping (optional)", "Smart TV"],
-    parking: "Street parking nearby",
+      "A well-appointed studio designed for solo travellers or short stays — a comfortable sleeping area, an integrated kitchen, and a private bathroom, all finished to the same standard as our larger residences.",
+    unitsAvailable: "3 units available",
+    bedroom: "Single sleeping area with a comfortable bed and storage space.",
+    bathroom: "One private bathroom with shower.",
+    kitchen:
+      "Integrated kitchenette with hob, fridge, and microwave — everything needed for a short or extended stay.",
+    living: "Combined living and sleeping area with a smart TV and small work desk.",
+    amenities: ["Daily housekeeping (optional)", "High-speed Wi‑Fi", "Smart TV", "24/7 security"],
+    parking: "Street parking available nearby.",
     quick: {
-      "Bed size": "King",
-      "Bedrooms": "Studio",
-      "Bathrooms": "1",
-      "Occupancy": "2 adults",
-      "Size": "~36 m²",
+      "Bed size": "Standard",
+      Bedrooms: "Studio",
+      Bathrooms: "1",
+      Occupancy: "Up to 2 guests",
     },
-    images: [room2, lounge, hero1],
-  },
-  {
-    slug: "two-bedroom-premier",
-    title: "Two-Bedroom Premier",
-    short: "Luxurious two-bedroom with king beds and three bathrooms.",
-    description:
-      "A premium two-bedroom layout with generous living spaces, curated finishes and three bathrooms to ensure comfort for families or groups.",
-    bedrooms: "2 bedrooms, king-size beds, premium linens",
-    bathrooms: "3 bathrooms — en suite and guest facilities",
-    kitchen: "Chef-style kitchen with full appliances and dining seating",
-    living: "Spacious living room with premium audio and viewing experience",
-    amenities: ["24/7 concierge", "Gym access", "Laundry service"],
-    parking: "Private covered parking",
-    quick: {
-      "Bed size": "King",
-      "Bedrooms": "2",
-      "Bathrooms": "3",
-      "Occupancy": "4 adults",
-      "Size": "~110 m²",
+    images: [room3, pool, gym],
+    location: {
+      latitude: 6.5244,
+      longitude: 3.3792,
+      address: "Home Pestana Apartments, Ikorodu, Nigeria",
     },
-    images: [lounge, room2, room1],
   },
 ];
 

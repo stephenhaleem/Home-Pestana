@@ -1,14 +1,15 @@
-import room1 from "../../assets/room-1.jpg?url";
-import room2 from "../../assets/room-2.jpg?url";
-import room3 from "../../assets/room-3.jpg?url";
-
+import { Link } from "@tanstack/react-router";
 import apartments from "./apartmentsData";
 
 const items = apartments.map((a) => ({
   img: a.images[0],
-  tag: a.slug.includes("studio") ? "Studio Suite" : a.slug.includes("one-bedroom") ? "One Bedroom" : "Two Bedroom",
+  tag: a.slug.includes("studio")
+    ? "Studio Suite"
+    : a.slug.includes("one-bedroom")
+      ? "One Bedroom"
+      : "Two Bedroom",
   title: a.title,
-  price: "—",
+  price: "On request",
   desc: a.short,
   slug: a.slug,
 }));
@@ -64,17 +65,13 @@ export function Apartments() {
                   </div>
                 </div>
                 <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{it.desc}</p>
-                <a
-                  href={`/apartments/${it.slug}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.history.pushState({}, '', `/apartments/${it.slug}`);
-                    window.dispatchEvent(new PopStateEvent('popstate'));
-                  }}
+                <Link
+                  to="/Apartments/$slug"
+                  params={{ slug: it.slug }}
                   className="gold-underline mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-foreground"
                 >
                   View details →
-                </a>
+                </Link>
               </div>
             </article>
           ))}

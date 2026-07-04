@@ -1,52 +1,91 @@
 import pool from "../../assets/amenity-pool.jpg?url";
+import gym from "../../assets/amenity-gym.jpg?url";
+import lounge from "../../assets/amenity-lounge.jpg?url";
 
-const list = [
-  { t: "Rooftop Infinity Pool", d: "Sunset skyline swims with butler service." },
-  { t: "24/7 Concierge", d: "From dinner reservations to private drivers." },
-  { t: "Signature Spa", d: "Steam, sauna, and treatments in-suite." },
-  { t: "Executive Fitness", d: "Technogym floor with skyline views." },
-  { t: "Daily Housekeeping", d: "Turndown, linens, and floral touches." },
-  { t: "Private Chef", d: "In-residence dining crafted on request." },
+const featured = [
+  {
+    img: pool,
+    title: "Swimming Pool",
+    desc: "A quiet place to unwind after a long day.",
+    span: "lg:col-span-2 lg:row-span-2",
+    aspect: "aspect-[4/5] lg:aspect-auto",
+  },
+  {
+    img: lounge,
+    title: "Residents' Lounge",
+    desc: "Comfortable shared space for guests.",
+    span: "lg:col-span-2",
+    aspect: "aspect-[16/10]",
+  },
+  {
+    img: gym,
+    title: "Fitness Area",
+    desc: "Stay on routine during your stay.",
+    span: "lg:col-span-1",
+    aspect: "aspect-square",
+  },
+];
+
+const included = [
+  "24/7 security",
+  "High-speed Wi\u2011Fi",
+  "Backup power",
+  "Daily housekeeping",
+  "On-site parking",
+  "Smart TV in every unit",
 ];
 
 export function Amenities() {
   return (
-    <section id="amenities" className="relative z-100 py-28 bg-background lg:py-40 overflow-hidden">
-      <div className="absolute inset-0 -z-10">
-        <img
-          src={pool}
-          alt=""
-          className="w-full h-[130%] object-cover opacity-25"
-          data-parallax="0.4"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/85 to-background" />
-      </div>
-
+    <section id="amenities" className="relative z-10 py-28 lg:py-40 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="text-center max-w-2xl mx-auto reveal-on-scroll">
-          <span className="text-xs uppercase tracking-[0.4em] text-gold-deep">Amenities</span>
-          <h2 className="mt-4 font-serif text-4xl md:text-6xl text-foreground">
-            Everything considered.
-            <br />
-            <span className="text-gradient-gold italic">Nothing overlooked.</span>
-          </h2>
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16 reveal-on-scroll">
+          <div className="max-w-2xl">
+            <span className="text-xs uppercase tracking-[0.4em] text-gold-deep">Amenities</span>
+            <h2 className="mt-4 font-serif text-4xl md:text-6xl text-foreground">
+              Comfort, <span className="text-gradient-gold italic">handled daily.</span>
+            </h2>
+          </div>
+          <p className="max-w-md text-muted-foreground leading-relaxed">
+            Every residence at Home Pestana comes with the essentials taken care of, plus shared
+            spaces built for rest and routine.
+          </p>
         </div>
 
-        <div className="mt-20 grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border/60 rounded-2xl overflow-hidden shadow-elegant border border-border/60">
-          {list.map((a, i) => (
+        <div className="grid lg:grid-cols-4 lg:grid-rows-2 gap-4 lg:h-[560px]">
+          {featured.map((f, i) => (
             <div
-              key={a.t}
-              className="reveal-on-scroll group relative bg-card p-10 hover:bg-accent/40 transition-colors duration-500"
-              style={{ transitionDelay: `${i * 80}ms` }}
+              key={f.title}
+              className={`zoom-hover reveal-on-scroll group relative rounded-2xl overflow-hidden shadow-soft ${f.span} ${f.aspect}`}
+              style={{ transitionDelay: `${i * 100}ms` }}
             >
-              <div className="w-12 h-12 rounded-full bg-gradient-gold flex items-center justify-center text-primary-foreground font-serif text-lg shadow-gold group-hover:scale-110 transition-transform duration-500">
-                {String(i + 1).padStart(2, "0")}
+              <img
+                src={f.img}
+                alt={f.title}
+                className="zoom-hover-img w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-6">
+                <h3 className="font-serif text-2xl text-white">{f.title}</h3>
+                <p className="mt-1 text-sm text-white/80">{f.desc}</p>
               </div>
-              <h3 className="mt-6 font-serif text-2xl text-foreground">{a.t}</h3>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{a.d}</p>
             </div>
           ))}
+
+          <div className="reveal-on-scroll lg:col-span-1 rounded-2xl border border-border/60 bg-card p-8 flex flex-col justify-center shadow-soft">
+            <h3 className="text-xs uppercase tracking-[0.25em] text-gold-deep mb-5">
+              Included with every stay
+            </h3>
+            <ul className="space-y-3">
+              {included.map((item) => (
+                <li key={item} className="flex items-center gap-3 text-sm text-foreground/85">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gradient-gold shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
