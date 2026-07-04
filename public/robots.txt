@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /.env
+Disallow: /.git
+Crawl-delay: 1
+
+# Sitemaps
+Sitemap: https://homepestana.com/sitemap.xml
+Sitemap: https://homepestana.com/sitemap-apartments.xml
+
+# Specific rules for common bots
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1

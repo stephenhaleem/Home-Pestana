@@ -77,23 +77,39 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Home Pestana Apartments — Luxury Serviced Residences" },
+      { title: "Home Pestana Apartments — Luxury Serviced Residences in Lagos" },
       {
         name: "description",
         content:
-          "Home Pestana Apartments offers curated luxury serviced residences with gilded interiors, five-star concierge, and effortless hospitality.",
+          "Home Pestana Apartments offers luxury serviced apartments in Lagos with premium interiors, daily housekeeping, high-speed WiFi, and world-class concierge services. Studio to 2-bedroom options.",
       },
-      { property: "og:title", content: "Home Pestana Apartments" },
+      {
+        name: "keywords",
+        content: "serviced apartments Lagos, luxury residences Lagos, short-term rentals, corporate apartments, vacation rentals Lagos",
+      },
+      { name: "author", content: "Home Pestana Apartments" },
+      { name: "robots", content: "index, follow" },
+      { property: "og:title", content: "Home Pestana Apartments — Luxury Serviced Residences" },
       {
         property: "og:description",
-        content: "Luxury serviced apartments crafted for those who value quiet luxury.",
+        content: "Discover luxury serviced apartments in Lagos. Premium amenities, professional concierge, and flexible booking options.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://homepestana.com" },
+      { property: "og:site_name", content: "Home Pestana Apartments" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Home Pestana Apartments" },
+      {
+        name: "twitter:description",
+        content: "Luxury serviced apartments in Lagos with premium amenities.",
+      },
+      { name: "theme-color", content: "#c9a961" },
+      { name: "format-detection", content: "telephone=no" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "canonical", href: "https://homepestana.com" },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap",
